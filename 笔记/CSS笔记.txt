@@ -1,0 +1,424 @@
+html负责构建网页的基本结构，css美化网页页面效果
+1.css语法和用法
+    基本结构：每一个样式由两部分组成，选择符和声明
+    用法：如何在网页中加入css
+    三种方法：
+        1.在行内直接加入样式 
+            <标签名 style="样式属性;属性值">
+            <div id="round" style="width:400px; height:300px;">
+        2.在头部嵌入样式表
+          <head>
+             <style type="text/css">
+               选择符{样式属性:属性值;}
+             </style>
+          </head>
+        3.链接到外部样式表
+            <head>
+                <link rel="stylesheet" href="style.css">
+            </head>
+
+2.基本选择符
+    1.标签选择符
+        <style> p {font-size:12px; color:red;} </style>
+
+    2.类别选择器（class）
+        为不同元素拥有相同的显示样式而定义的。
+        以class="类别名"来进行定义
+        类别名的命名规则：只能使用字母、数字、下划线、连字符
+        类别首字符必须以字母开头
+        类选择符必须以一个点（.）前缀开头，后面跟随一个自定义类名
+        在css中以点加类别名来定义
+
+    3.id选择符
+        以id="id名"来进行定义
+        在css中以#加id名来定义
+        能被为宜标识,在js调用过程建议用id
+        如何确定使用类选择符和id选择符
+            1.对于网页结构,一般建议使用id选择符
+            2.对于重复出现的样式,可以考虑选择类别选择符进行提炼
+            3.当id选择符和类别选择符样式发生冲突时,id选择符要优先于类选择符定义的样式
+
+    4.通配选择符
+        如果所有的html元素要定义相同的样式,使用(*)来表示
+        *{margin:0;pandding:0}
+        margin: 0;
+        padding: 0;
+        list-style: none;    
+        border-style: none;
+        text-decoration: none;
+
+        a {
+        color: #fff;
+        outline: none;
+        transition: all 0.2s linear 0s;
+        }
+    
+    CSS选择器（http://www.w3school.com.cn/cssref/css_selectors.asp）
+    当前元素的，第二个元素 ---  :nth-child(2)
+    当前元素的，最后一个元素---- :last-of-type    
+    :nth-child(2n-1)选取奇数标签，2n-1可以是odd
+    :nth-child(2n)选取偶数标签，2n也可以是even
+    :nth-child(n+4)选取大于等于4标签，“n”表示从整数，下同
+    :nth-child(-n+4)选取小于等于4标签
+    :nth-child(3n+1)自定义选取标签，3n+1表示“隔二取一”
+    :nth-last-child(3)选取倒数第几个标签,3表示选取第3个
+    :focus 选择器用于选取获得焦点的元素
+
+3.文字样式
+     3.1：网页文字
+        字体类型：font-family
+        Microsoft YaHei,SimHei,SimSun
+        字体大小：font-size，
+        单位：绝对单位：厘米，英寸（一般在网页很少使用）
+                   相对单位：PX，会根据屏幕分辨率发生改变。
+                            em，相对于父辈字体的大小来定义字体大小。
+                             %，以百分比的形式定义字体大小，使用与em相同
+         字体颜色：color，#nnnnnn、颜色名，red
+         字体样式：
+             1.粗体：font-weight：（100-900），bold等于700
+             2.斜体：font-style：italic
+             3.下划线：text-decoration：
+                                       underline    下划线
+                                       overline     上划线
+                                       line-through 删除线
+
+     3.2：段落样式
+            首行缩进：text-indent:2em
+            左右缩进：padding-left和pdding-right
+            行高：line-height  具有继承性，当在body或者父元素中设置了行高，那么会对子元素产生影响，如果子元素行高不一样，必须重新设置。
+            水平对齐：text-align：left、right、center
+
+     3.3：超链接样式
+         1.伪类样式
+           四种属性 a:link     超链接的默认样式
+           　　　　 a:visited  单击超链接后的样式
+           　　　　 a:hover    鼠标移动到超链接时的样式
+           　　　　 a:active   在点击鼠标时的样式
+         2.下划线样式
+            text-decoration:none            
+            border-dottom
+            width,color,style
+
+     3.4：图片样式
+         1.图片大小
+           <img src="图片名" width=" " height=" " />
+           css中控制图片大小同样用宽高来控制。
+         2.图片边框
+           border
+           width.color style
+           style:none 没有边框 solid实线 dashed虚线
+
+     3.5：背景图片
+         设置背景图片：background: url(../文件);
+         背景图片平铺：
+           background-repeat:repeat     完全平铺（默认）
+                             repeat-x   横向平铺
+                             repeat-y   纵向平铺
+                             no-repeat  不平铺 
+
+     3.6：背景图片位置
+       background-position
+            :lenght | lenght (可以是像素具体的值来定位)  X轴位置与Y轴位置  以负数值来写
+            :top(上) | center(居中) | bottom(下)
+
+4.列表
+   清除列表项目符号 
+    list-style:none
+
+5.CSS盒子模型
+    盒子模型组成部分
+    由内到外：内容区域(content)
+    内边距(padding) 
+    边框(border) 
+    外边距(margin)
+    margin \ padding: 都具有四个方向:top,bottom,left,right
+   
+    超出部分隐藏,防止溢出: overflow:hidden
+
+    外边距margin：定义元素与元素之间的距离  margin-left\-right\-top\-bottom
+        margin:10px; 四个方向从上、右、下、左。
+        padding: 同上。
+
+    border(边框)：
+        border-left border-right border-top border-bottom
+        控制边框有三个内容：border-width  border-color  border-style
+        border-width属性，取值为整数，大于等于0
+        border-color属性，这个取值跟color一样，默认为黑色
+        border-style属性，none: 无边框  solid: 实线  dashed: 虚线  dotted: 点线                              
+                   
+                                    
+6.css定位方法
+    块元素独占一行，内联元素不独占一行。
+        display：block; 定义块元素
+        display：inline; 内联元素
+    浮动就是要打破常规的顺序流，实现重组
+        float：left，脱离普通文档流，对象向左浮动。
+        float：right，对象向右浮动。
+        clear:both; ：/清除浮动/    
+    相对定位: position: relative; （定义一个相对定位点）
+    绝对定位: position: absolute; （以相对定位点进行设置）
+    游览器窗口定位: position: fixed;
+    属性：top: 0; bottom: 0; left: 0; right: 0;
+
+7.鼠标形状
+    cursor:pointer;   CSS鼠标手型效果
+    text是移动到文本上的那种效果
+    wait是等待的那种效果
+    default是默认效果
+    e-resize是向右的箭头
+    ne-resize是向右上的箭头
+    n-resize是向上的箭头
+    nw-resize是向左上的箭头
+    w-resize是向左的箭头
+    sw-resize是左下的箭头
+    s-resize是向下的箭头
+    se-resize是向右下的箭头
+    auto是由系统自动给出效果 
+    鼠标点击无效果：pointer-events: none;
+    隐藏鼠标点击后虚线：a {outline:none;}
+
+8.文字样式
+        字体类型：font-family："Microsoft YaHei"；
+        自设字体：@font-face: {
+                         font-family: 字体名称;
+                         src: url('字体文件目录');
+        }
+        颜色： color: #fff;
+        大小： font-size: 12px;
+        文字加粗细：font-weight：bold;   normal;  不加粗
+        文本对齐： text-align: left; 左对齐、center; 居中水平对齐、 right 右对齐
+        垂直居中： line-height: 20px; （也就只是行高）
+        文本缩进： text-indent: 10px;
+        文字（单词）间隔： word-spacing: 20px; （允许负值）
+        文字（字母）间隔： letter-spacing: 20px; （允许负值）
+        文字大小写： text-transform: none;  capitalize 单词首字母大写、uppercase 全部大写、lowercase 全部小写
+        文字特效： text-decoration: none 标准文本、 underline 下划线 、overline 上划线 、line-through 删除线
+        文字超出以省略号结尾：overflow:hidden, white-space:nowrap, text-overflow:ellipsis   四个属性缺一不可。
+        文字阴影：text-shadow: 0 0 5px #000;
+        防止溢出：overflow: hidden;
+
+8.1 字体图标
+        元素前面插入内容：a::before 
+        元素后面插入内容：a::after
+    
+9.元素样式
+    属性优先级：!important;  写在属性值后面 优先级最高！
+    元素类型：display: block; 块元素、inline; 内联元素
+    元素宽高：width: 20px;  height: 20px; 
+    元素背景：background: #000; 
+    最小宽高：min-width:1200px; min-height: 1200px;
+    最大宽高：max-width: 1200px; max-height: 1200px;
+    元素边框：border: 1px solid #000;
+    元素圆角：border-radius: 10px;
+    元素透明：opacity: 1;    值为 0 则完全透明
+    元素阴影：box-shadow: 0 0 10px #000;
+    元素过渡：transition: all 1s linear 0s; 
+    元素动画：animation: myfirst 1s linear 0s 1 alternate;
+                     @keyframes ID(或class) {
+                     0%   {初始动画} 
+                     25% {运行25%时的动画}
+                     75% {运行75%时的动画}
+                     100  {结束动画}                }
+    元素2D转换：transform: translate(X,Y);   rotate(30deg);  scale(2,4);  skew(30deg,20deg);  matrix(0.866,0.5,-0.5,0.866,0,0); 
+    元素3D转换：transform: rotateX(120deg); rotateY(120deg)
+
+10.元素背景
+    纯色背景：background-color: #000;
+    透明背景：background：rgba(255,255,255,0.5); ---三个颜色编码，一个透明度，0为 0%完全透明
+    背景大小：background-size: 50px 50px;
+    背景图片：background-image: url(../文件.jpg);
+    背景图片位置：background-position: center center; ( 上 下 左 右 中  X轴与Y轴 允许负值)
+    背景图片显示次数：background-repeat: no-repeat; 显示一次  x-repeat X轴重复显示 y-repeat Y轴重复显示
+    简化写法：background: rgba(0,0,0,1) url("../文件名") no-repeat center center;
+    相对内容框定位背景：background-origin: content-box; padding-box; border-box;
+
+    
+    
+
+    新建窗口打开链接：<a href="#" target="_blank"></a>
+    
+
+
+    圆角：border-radius: 10px;
+    border-top-left-radius: 10px; 左上角园角
+    border-top-right-radius: 10px; 右上角园角
+    border-bottom-left-radius: 10px; 左下角园角
+    border-bottom-right-radius: 10px; 右下角园角
+
+    搜索框默认值：placeholder="请输出景点或城市"  输入时默认值会消失。
+
+    投影：box-shadow: 0 10px 10px #000;
+    box-shadow有6个可设的值
+    box-shadow:阴影类型 X轴位移 Y轴位移 阴影大小 阴影扩展 阴影颜色
+    注意：当不设阴影类型的时候，默认是投影效果。当设为inset时，为内阴影效果
+    注意：负数为水平为左边，负数垂直为上
+    注意：阴影大小、扩展、颜色和ps同理
+    例：
+    投影，没有位移，没有扩展，有阴影，有阴影色彩
+    img{box-shadow:0 0 10px #ccc}
+    投影，没有位移，有扩展，有阴影，有阴影色彩
+    img{box-shadow:0 0 10px 20px #ccc}
+    内阴影，无位移，10px大小，没有扩展，有阴影色彩
+    img{box-shadow:inset 0 0 10px #ccc}
+    多重阴影效果
+    img{box-shadow:-10px 0 10px red,box-shadow:10px 0 10px blue,box-shadow:0 -10px 10px yellow,box-shadow:0 10px 10px #ccc}
+    使用多个阴影属性的顺序问题
+    img{box-shadow:0 0 10px green;box-shadow: 0 0 10px 20px yellow}
+    注意：先写的阴影显示在最里面，第二个阴影则显示在外面
+    注意：第二个阴影扩散的角度要大于第一个阴影，不然只显示第一个阴影，因为第二个被遮盖了
+
+
+    文字中间间隔：word-spacing: 0px;
+    文字字符间隔：letter-spacing: 0px
+
+    解决图片下方空出的位置：vertical-align: middle;
+
+    最小宽度不得小于：min-width:100%;
+
+    随屏幕大小变化宽度：max-width: 100%;
+
+    垂直居顶：vertical-align: top;
+
+    transition-duration 属性规定完成过渡效果需要花费的时间（以秒或毫秒计）。
+    transition-duration: 5s;
+    -moz-transition-duration: 5s; /* Firefox 4 */
+    -webkit-transition-duration: 5s; /* Safari 和 Chrome */
+    -o-transition-duration: 5s; /* Opera */
+
+    transition: all 300ms linear 0s; 无指定运动样式
+    transition: background-size 200ms linear 0s;  指定运动样式
+    transition:运动的样式 持续时间 运动形式 延迟时间
+    运动的样式: all(所有属性改变) || [attr] (指定要运动的样式)|| none(没有属性改变)
+    持续时间: 指定一个动画开始执行的时间，也就是说当改变元素属性值后多长时间开始执行transition效果，单位为ms毫秒.
+    运动形式: ease(逐渐变慢) | linear(匀速) | ease-in(加速) | ease-out(减速) | ease-in-out(先加速然后减速) | cubic-bezier(该值允许你去自定义一个时间曲线)(number, number, number, number>)    
+    延迟时间: 默认大小是"0"，也就是变换立即执行，没有延迟.
+
+    @keyframes myfirst 改变背景色和位置
+    当您在 @keyframes 中创建动画时，请把它捆绑到某个选择器，否则不会产生动画效果。
+    动画 : 名称     动画所花费的时间，以秒或毫秒计      动画速度效果     动画开始之前的延迟   运行次数   是否应该轮流反向播放动画   
+    div {    
+         animation: myfirst 1s linear 0s 1 alternate;            动画在1秒时间内完成，匀速运行、没有延时、只运行一次，反向播放(因只播放一次反向播放没有效果)
+         animation: myfirst 1s linear 0s infinite alternate;    动画在1秒时间内完成，匀速运行、没有延时、无限次播放，反向播放
+    }    
+
+    @keyframes myfirst {
+        0%   {background: red; left:0px; top:0px;}
+        25%  {background: yellow; left:0px; top:0px;}
+        50%  {background: blue; left:0px; top:0px;}
+        75%  {background: green; left:0px; top:0px;}
+        100% {background: red; left:0px; top:0px;}
+    }
+
+    //2D转换
+    transform: translate(50px,100px);  //元素从其当前位置移动，根据给定的 left（x 坐标） 和 top（y 坐标） 位置参数
+    transform: rotate(30deg);         //元素顺时针旋转给定的角度。允许负值，元素将逆时针旋转
+    transform: scale(2,4);         //元素的尺寸会增加或减少，根据给定的宽度（X 轴）和高度（Y 轴）参数 !(倍数)!
+    transform: skew(30deg,20deg);      //元素翻转给定的角度，根据给定的水平线（X 轴）和垂直线（Y 轴）参数
+    transform:matrix(0.866,0.5,-0.5,0.866,0,0);    //所有 2D 转换方法组合在一起    
+
+    //3D转换
+    transform: rotateX(120deg);    //元素围绕其 X 轴以给定的度数进行旋转
+    transform: rotateY(130deg);    //元素围绕其 Y 轴以给定的度数进行旋转
+
+    transform-origin:20% 40%;     //属性允许您改变被转换元素的位置
+    transform-style: flat;        //子元素将不保留其 3D 位置
+    transform-style: preserve-3d;    // 子元素将保留其 3D 位置 规定如何在 3D 空间中呈现被嵌套的元素
+    backface-visibility:hidden;    //元素隐藏
+    backface-visibility:visible;    //元素显示
+
+
+    双标题外包标签：<hgroup><h2></h2><h1></h1></hgroup>
+
+    HTML内新的图片外包标签：
+        <figure>
+            <img src="../img/1.jpg">
+            <figcaption>图片标题</figcaption>
+        </figure>
+
+    移动web兼容代码：<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+
+
+
+表单：
+    表单的组成部分
+    按钮：<button>搜索</button>
+    1.表单标签<form></form>
+    2.表单单域：文本、多行文本、密码框、单选按钮、多选按钮、下拉选择按钮、文件上传按钮。
+            text                     password    radio       checkbox                                   file        
+
+    输入域：input标签，是一个单标签，可以定义多种形式的输入域，包括文本框、密码框、文件上传组件、单选按钮、提交按钮、重置按钮。<input type=" " />
+    输入域常用的属性包括type(类别)、value(值)maxlength(字符串最大长度，数字，大于等于0)、value表示输入域的默入值，size: 表示输入框宽度。
+
+    属性默认值: value
+    属性默认值：checked
+    密码：password
+    文件上传组件： file
+    查询：submit 
+    选择域：
+    单选按钮（radio）单选按钮中的name值是一样的。
+    多选按钮（checkbox）
+    下拉菜单/列表框select与option元素配合使用。可以包含任意数量的option或optgroup
+
+    搜索框：
+    <input class="text" type="text" onblur="if (this.value == '') {this.value = '搜索 ';}" onfocus="this.value = '';" value="Name ">
+
+    flexbox布局-----------------------------
+
+    高度溢出自动显示滚动条：overflow: auto;
+    表格合并单元格：
+    竖向合并：rowspan: "2"
+    横向合并：colspan: "2"
+
+媒体查询：@media
+    @media screen and (max-width: 300px) {
+    body {
+        	background-color:lightblue;
+             }
+    }
+
+    @media screen and (min-width:960px) and (max-width:1200px){
+        body{
+            background:yellow;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
