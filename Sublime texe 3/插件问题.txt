@@ -1,0 +1,51 @@
+离线安装：Package Control
+将Package Control.sublime-package 文件放到Sublime Text 3\Installed Packages 目录下。
+
+离线安装插件：Install Package
+打开 Preferences->Package Setting->Package Control ->Setting User  设置文件：channel_v3.json 目录
+
+	"bootstrapped": true,
+		"channels":
+	[
+		"D:/channel_v3/channel_v3.json"
+	],
+	"in_process_packages":
+	[
+
+
+插件：
+语言：Chineselocalizations
+提示插件：Emmet  -- SublimeCodeIntel --JavaScript Completions
+高亮：BracketHighlighter
+颜色：Color Highlighter
+右击菜单：SideBarEnhancements
+
+
+设置字体：
+\Sublime Text 3\Packages\User   --> Preferences.sublime-settings 文件
+
+"font-size": 16 ,
+"font_face": "Bitstream Vera Sans Mono",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
